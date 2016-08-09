@@ -1,0 +1,23 @@
+{
+  "name": "iphicles",
+  "description": "frontend for heracles",
+  "main": "server.js",
+  "authors": [
+    "Jade"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "ContentTools": "^1.2.9",
+    "vue": "^1.0.26"
+  }
+}
