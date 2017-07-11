@@ -28,7 +28,7 @@ gulp.task('clean', function(){
 });
 
 
-gulp.task('less', function () {
+gulp.task('less', ['clean'], function () {
   return gulp.src(config.less)
     .pipe(less())
     .pipe(autoprefixer({browsers: ['last 2 versions'], cascade: false}))
@@ -36,13 +36,18 @@ gulp.task('less', function () {
 }); 
 
 
-gulp.task('css', function () {
+gulp.task('css', ['less'], function () {
   return gulp.src(config.css)
     .pipe(cleanCSS())
     .pipe(gulp.dest(path.join(config.dist, 'styles')));
 }); 
 
-gulp.task('scripts', function () {
+gulp.task('fonts', ['clean'], function () {
+  return gulp.src(config.fonts)
+    .pipe(gulp.dest(path.join(config.dist, 'fonts')));
+}); 
+
+gulp.task('scripts', ['clean'], function () {
     return gulp.src(config.scripts)
         .pipe(requirejs())
         .pipe(gulp.dest(path.join(config.dist, 'scripts')));
@@ -72,4 +77,4 @@ gulp.task('html', function () {
 
 gulp.task('server', ['clean', 'less', 'connect', 'watch']);
 
-gulp.task('build', ['clean', 'css'])
+gulp.task('build', ['clean', 'less', 'css', 'fonts'])
